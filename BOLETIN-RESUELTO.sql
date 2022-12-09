@@ -480,7 +480,6 @@ DECLARE
     v_ename scott.emp.ename%TYPE;
     v_sal scott.emp.sal%TYPE;
 BEGIN
-    -- SQLINES LICENSE FOR EVALUATION USE ONLY
     select ename, sal into v_ename, v_sal
     from scott.emp
     where empno = 7782;
@@ -594,7 +593,6 @@ AS $$
 DECLARE
     v_totalempresa int=0;
 BEGIN
-    -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT sum(comm) INTO v_totalempresa FROM scott.emp;
     raise notice '%','Total Comisiones en la Empresa: '||v_totalempresa;
 END;
