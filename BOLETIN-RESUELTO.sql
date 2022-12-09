@@ -618,6 +618,24 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-
+-- 11.3. Recrear el ejercicio de devuelve los nombres de los tres empleados más antiguos.
+-- Función:
+CREATE OR REPLACE FUNCTION Devuelve3EmpleadosMasAntiguos() RETURNS VOID
+AS $$
+DECLARE
+    v_nombre scott.emp.ename%TYPE;
+    c_empleados cursor
+    for
+    select ename
+    from scott.emp
+    order by hiredate
+    fetch first 3 rows only;
+BEGIN
+    for v_empleado in c_empleados loop
+        v_nombre := v_empleado.ename;
+        raise notice '%','Nombre: ' || v_nombre;
+    end loop;
+END;
+$$ LANGUAGE plpgsql;
 
 
