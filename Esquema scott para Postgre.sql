@@ -1,16 +1,14 @@
--- creación esquema scott en postgresql
-
--- crear base de datos scott:
+-- creación de la base de datos scott:
 CREATE DATABASE scott;
 
--- creacion usuario scott en postgresql y darle permisos sobre el esquema scott:
+-- creación del usuario scott y ortorgación de permisos sobre la base de datos scott:
 create user scott with password 'tiger';
 grant all privileges on database scott to scott;
 
--- crear esquema scott en postgresql:
+-- creación del esquema scott:
 CREATE SCHEMA scott AUTHORIZATION scott;
 
--- crear tablas en postgresql:
+-- creación de tablas:
 CREATE TABLE scott.dept
 (
   deptno integer NOT NULL,
@@ -46,7 +44,7 @@ ALTER TABLE scott.emp
   OWNER TO scott;
 
 
--- insertar datos en postgresql:
+-- inserts:
 INSERT INTO scott.dept VALUES (10,'ACCOUNTING','NEW YORK');
 INSERT INTO scott.dept VALUES (20,'RESEARCH','DALLAS');
 INSERT INTO scott.dept VALUES (30,'SALES','CHICAGO');
@@ -61,20 +59,6 @@ INSERT INTO scott.emp VALUES (7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,NULL
 INSERT INTO scott.emp VALUES (7782,'CLARK','MANAGER',7839,'1981-06-09',2450,NULL,10);
 INSERT INTO scott.emp VALUES (7788,'SCOTT','ANALYST',7566,'1987-04-19',3000,NULL,20);
 INSERT INTO scott.emp VALUES (7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10);
-
--- 12. Hacer un procedimiento que muestre el nombre y el salario del empleado cuyo código es 7782:
-CREATE OR REPLACE FUNCTION nombre_salario(p_empno integer)
-    RETURNS TABLE(ename character varying(10), sal numeric(7,2)) AS
-$BODY$
-BEGIN
-    RETURN QUERY SELECT ename, sal FROM scott.emp WHERE empno = p_empno;
-END;
-$BODY$
-    LANGUAGE plpgsql VOLATILE
-    COST 100;
-Ejecutar el procedimiento:
-SELECT nombre_salario(7782);
-
 
 
 
