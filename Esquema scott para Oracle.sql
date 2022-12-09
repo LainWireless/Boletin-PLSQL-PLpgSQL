@@ -1,5 +1,3 @@
---- https://programaressencillo.wordpress.com/2015/03/01/plsql-esquema-scotttiger/
-
 alter session set "_ORACLE_SCRIPT"=true;
 
 -- Borramos el usuario por si estaba creado previamente
